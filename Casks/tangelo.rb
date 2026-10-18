@@ -1,6 +1,6 @@
 cask "tangelo" do
-  version "1.0.0"
-  sha256 "616e61a4d83daa41e19d10f154af026e32c86fa442bfe46fb2239b2046f6f655"
+  version "1.1.0"
+  sha256 "2f504594a72c9655f58570d4d0d53d0401089cd362bb5d617cdd01272858762b"
 
   url "https://github.com/thisisrishi/Tangelo/releases/download/v#{version}/Tangelo.dmg"
   name "Tangelo"
