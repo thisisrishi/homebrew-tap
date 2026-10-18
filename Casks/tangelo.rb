@@ -12,22 +12,20 @@ cask "tangelo" do
     strategy :github_latest
   end
 
-  depends_on macos: ">= :sonoma"
+  depends_on macos: :sonoma
 
   app "Tangelo.app"
 
   # Tangelo is open source but not yet notarized; clear the quarantine flag so it opens normally.
-  postflight do
-    system_command "/usr/bin/xattr",
-                   args: ["-dr", "com.apple.quarantine", "#{appdir}/Tangelo.app"],
-                   sudo: false
+  postflight_steps do
+    run "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "{{appdir}}/Tangelo.app"], must_succeed: false
   end
 
   uninstall quit: "io.github.thisisrishi.tangelo"
 
   zap trash: [
-    "~/Library/Preferences/io.github.thisisrishi.tangelo.plist",
     "~/Library/Caches/io.github.thisisrishi.tangelo",
+    "~/Library/Preferences/io.github.thisisrishi.tangelo.plist",
   ]
 
   caveats <<~EOS
